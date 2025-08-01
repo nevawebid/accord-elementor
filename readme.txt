@@ -1,11 +1,10 @@
 === ACF/SCF Accordion for Elementor ===
-Contributors: nevaweb
-Donate link: https://nevaweb.id/donate/
+Contributors: Nevaweb
 Tags: acf, scf, accordion, elementor, widget, repeater, custom fields
 Requires at least: 5.0
 Tested up to: 6.6
 Requires PHP: 7.4
-Stable tag: 1.0.0
+Stable tag: 1.1.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -159,6 +158,14 @@ For support, please visit our [support forum](https://nevaweb.id/support/) or [c
 
 == Changelog ==
 
+= 1.1.0 =
+* Added customizable border options for accordion title
+* Added customizable border options for accordion content
+* Enhanced border radius controls for content section
+* Added box shadow controls for content section
+* Improved animations to respect border settings during transitions
+* Fixed CSS display issues during accordion open/close transitions
+
 = 1.0.0 =
 * Initial release
 * ACF and SCF dual support
@@ -173,6 +180,9 @@ For support, please visit our [support forum](https://nevaweb.id/support/) or [c
 * Security enhancements
 
 == Upgrade Notice ==
+
+= 1.1.0 =
+This update adds customizable border options for both accordion title and content. Improved border radius controls and animation handling.
 
 = 1.0.0 =
 Initial release of ACF/SCF Accordion for Elementor. Requires Elementor 3.0+ and ACF or SCF plugin.

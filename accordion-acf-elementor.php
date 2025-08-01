@@ -3,7 +3,7 @@
  * Plugin Name: ACF/SCF Accordion for Elementor
  * Plugin URI: https://github.com/nevawebid/accord-elementor
  * Description: A WordPress plugin that displays ACF (Advanced Custom Fields) or SCF (Secure Custom Fields) Repeater data as responsive accordion using Elementor widget. Fully customizable with smooth animations and accessibility support.
- * Version: 1.0.0
+ * Version: 1.1.0
  * Author: Nevaweb
  * Author URI: https://nevaweb.id
  * Text Domain: acf-accordion-elementor
@@ -42,7 +42,7 @@ if (!function_exists('add_action')) {
 }
 
 // Define plugin constants
-define('ACF_ACCORDION_ELEMENTOR_VERSION', '1.0.0');
+define('ACF_ACCORDION_ELEMENTOR_VERSION', '1.1.0');
 define('ACF_ACCORDION_ELEMENTOR_PLUGIN_URL', plugin_dir_url(__FILE__));
 define('ACF_ACCORDION_ELEMENTOR_PLUGIN_PATH', plugin_dir_path(__FILE__));
 

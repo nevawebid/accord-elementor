@@ -1,0 +1,210 @@
+/**
+ * ACF Accordion for Elementor - Frontend Styles
+ * 
+ * Styling untuk widget accordion yang dapat dikustomisasi melalui Elementor
+ */
+
+/* Base accordion styles */
+.acf-accordion-wrapper {
+    width: 100%;
+    margin: 0;
+}
+
+.acf-accordion-item {
+    border: 1px solid #e0e0e0;
+    background: #fff;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.acf-accordion-item + .acf-accordion-item {
+    margin-top: 10px;
+}
+
+/* Title styles */
+.acf-accordion-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    cursor: pointer;
+    background: #f8f9fa;
+    transition: all 0.3s ease;
+    border: none;
+    width: 100%;
+    text-align: left;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 1.4;
+    color: #333;
+    outline: none;
+    user-select: none;
+}
+
+.acf-accordion-title:hover {
+    background: #e9ecef;
+}
+
+.acf-accordion-title:focus {
+    box-shadow: 0 0 0 2px rgba(0, 124, 186, 0.3);
+}
+
+.acf-accordion-item.active .acf-accordion-title {
+    background: #007cba;
+    color: #fff;
+}
+
+.acf-accordion-title-text {
+    flex: 1;
+    margin: 0;
+    font-weight: inherit;
+}
+
+/* Icon styles */
+.acf-accordion-icon {
+    transition: transform 0.3s ease;
+    margin-left: 10px;
+    font-size: 16px;
+    line-height: 1;
+    color: inherit;
+}
+
+.acf-accordion-item.active .acf-accordion-icon {
+    transform: rotate(180deg);
+}
+
+/* Content styles */
+.acf-accordion-content {
+    padding: 20px;
+    border-top: 1px solid #e0e0e0;
+    background: #fff;
+    color: #333;
+    line-height: 1.6;
+    display: none;
+}
+
+.acf-accordion-item.active .acf-accordion-content {
+    display: block;
+    animation: acf-accordion-slideDown 0.3s ease;
+}
+
+/* Content typography */
+.acf-accordion-content p {
+    margin: 0 0 15px 0;
+}
+
+.acf-accordion-content p:last-child {
+    margin-bottom: 0;
+}
+
+.acf-accordion-content ul,
+.acf-accordion-content ol {
+    margin: 0 0 15px 20px;
+    padding: 0;
+}
+
+.acf-accordion-content li {
+    margin-bottom: 5px;
+}
+
+.acf-accordion-content h1,
+.acf-accordion-content h2,
+.acf-accordion-content h3,
+.acf-accordion-content h4,
+.acf-accordion-content h5,
+.acf-accordion-content h6 {
+    margin: 0 0 10px 0;
+    font-weight: 600;
+}
+
+/* Error message styles */
+.acf-accordion-error {
+    padding: 20px;
+    background: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+    border-radius: 4px;
+    text-align: center;
+    font-weight: 500;
+}
+
+/* Animation */
+@keyframes acf-accordion-slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+    .acf-accordion-title {
+        padding: 12px 15px;
+        font-size: 14px;
+    }
+    
+    .acf-accordion-content {
+        padding: 15px;
+    }
+    
+    .acf-accordion-icon {
+        font-size: 14px;
+        margin-left: 8px;
+    }
+}
+
+@media (max-width: 480px) {
+    .acf-accordion-title {
+        padding: 10px 12px;
+        font-size: 13px;
+    }
+    
+    .acf-accordion-content {
+        padding: 12px;
+    }
+}
+
+/* Accessibility improvements */
+.acf-accordion-title:focus-visible {
+    outline: 2px solid #007cba;
+    outline-offset: 2px;
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+    .acf-accordion-item {
+        border-color: #000;
+    }
+    
+    .acf-accordion-title {
+        background: #fff;
+        color: #000;
+        border: 1px solid #000;
+    }
+    
+    .acf-accordion-title:hover {
+        background: #f0f0f0;
+    }
+    
+    .acf-accordion-item.active .acf-accordion-title {
+        background: #000;
+        color: #fff;
+    }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+    .acf-accordion-title,
+    .acf-accordion-icon,
+    .acf-accordion-item {
+        transition: none;
+    }
+    
+    .acf-accordion-content {
+        animation: none;
+    }
+}

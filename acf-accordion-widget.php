@@ -355,6 +355,15 @@ class ACF_Accordion_Widget extends \Elementor\Widget_Base {
             ]
         );
 
+        $this->add_group_control(
+            \Elementor\Group_Control_Border::get_type(),
+            [
+                'name' => 'title_border',
+                'label' => esc_html__('Border', 'acf-accordion-elementor'),
+                'selector' => '{{WRAPPER}} .acf-accordion-title',
+            ]
+        );
+
         $this->add_responsive_control(
             'title_border_radius',
             [
@@ -424,6 +433,44 @@ class ACF_Accordion_Widget extends \Elementor\Widget_Base {
             \Elementor\Group_Control_Border::get_type(),
             [
                 'name' => 'content_border',
+                'label' => esc_html__('Border', 'acf-accordion-elementor'),
+                'selector' => '{{WRAPPER}} .acf-accordion-content',
+                'fields_options' => [
+                    'border' => [
+                        'default' => 'solid',
+                    ],
+                    'width' => [
+                        'default' => [
+                            'top' => 1,
+                            'right' => 1,
+                            'bottom' => 1,
+                            'left' => 1,
+                            'isLinked' => true,
+                        ],
+                    ],
+                    'color' => [
+                        'default' => '#e0e0e0',
+                    ],
+                ],
+            ]
+        );
+
+        $this->add_responsive_control(
+            'content_border_radius',
+            [
+                'label' => esc_html__('Border Radius', 'acf-accordion-elementor'),
+                'type' => \Elementor\Controls_Manager::DIMENSIONS,
+                'size_units' => ['px', '%'],
+                'selectors' => [
+                    '{{WRAPPER}} .acf-accordion-content' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+            ]
+        );
+
+        $this->add_group_control(
+            \Elementor\Group_Control_Box_Shadow::get_type(),
+            [
+                'name' => 'content_box_shadow',
                 'selector' => '{{WRAPPER}} .acf-accordion-content',
             ]
         );

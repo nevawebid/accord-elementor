@@ -132,9 +132,13 @@
             start: function() {
                 // Add opening class for additional CSS animations
                 $item.addClass('acf-accordion-opening');
+                // Ensure border styling is properly applied during animation
+                $content.css('display', 'block');
             },
             complete: function() {
                 $item.removeClass('acf-accordion-opening');
+                // Ensure content is visible with its borders
+                $content.css('display', 'block');
                 // Trigger custom event after animation completes
                 $item.trigger('acf-accordion:opened');
             }

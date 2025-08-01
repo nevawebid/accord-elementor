@@ -30,7 +30,7 @@
     cursor: pointer;
     background: #f8f9fa;
     transition: all 0.3s ease;
-    border: none;
+    border: none; /* Default border is none, but can be customized via Elementor */
     width: 100%;
     text-align: left;
     font-weight: 600;
@@ -45,10 +45,10 @@
     background: #e9ecef;
     transform: translateY(-1px);
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    /* Border properties will be maintained on hover */
 }
 
 .acf-accordion-title:focus {
-    box-shadow: 0 0 0 2px rgba(0, 124, 186, 0.3);
     outline: none;
 }
 
@@ -56,13 +56,10 @@
     transform: translateY(0);
 }
 
-.acf-accordion-title:focus {
-    box-shadow: 0 0 0 2px rgba(0, 124, 186, 0.3);
-}
-
 .acf-accordion-item.active .acf-accordion-title {
     background: #007cba;
     color: #fff;
+    /* Border properties will be preserved in active state */
 }
 
 .acf-accordion-title-text {
@@ -75,6 +72,8 @@
 .acf-accordion-icon {
     transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     font-size: 16px;
+    width: 20px;
+    height: 20px;
     line-height: 1;
     color: inherit;
     will-change: transform;
@@ -96,9 +95,6 @@
 /* Icon state management */
 .acf-accordion-icon-collapse,
 .acf-accordion-icon-expand {
-    position: absolute;
-    top: 0;
-    left: 0;
     transition: opacity 0.3s ease, transform 0.3s ease;
     display: flex;
     align-items: center;
@@ -154,16 +150,17 @@
 /* Content styles */
 .acf-accordion-content {
     padding: 20px;
-    border-top: 1px solid #e0e0e0;
     background: #fff;
     color: #333;
     line-height: 1.6;
     display: none;
+    /* Default border removed to allow Elementor controls to take precedence */
 }
 
 .acf-accordion-item.active .acf-accordion-content {
     display: block;
     animation: acf-accordion-slideDown 0.3s ease;
+    /* Border styling will be controlled by Elementor controls */
 }
 
 /* Content typography */
@@ -295,8 +292,7 @@
 
 /* Accessibility improvements */
 .acf-accordion-title:focus-visible {
-    outline: 2px solid #007cba;
-    outline-offset: 2px;
+    outline: none;
 }
 
 /* High contrast mode support */

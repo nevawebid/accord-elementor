@@ -111,6 +111,56 @@ class ACF_Accordion_Widget extends \Elementor\Widget_Base {
 
         $this->end_controls_section();
 
+        // Icon Section
+        $this->start_controls_section(
+            'icon_section',
+            [
+                'label' => esc_html__('Icons', 'textdomain'),
+                'tab' => \Elementor\Controls_Manager::TAB_CONTENT,
+            ]
+        );
+
+        $this->add_control(
+            'collapse_icon',
+            [
+                'label' => esc_html__('Collapse Icon', 'textdomain'),
+                'type' => \Elementor\Controls_Manager::ICONS,
+                'default' => [
+                    'value' => 'eicon-chevron-down',
+                    'library' => 'eicons',
+                ],
+                'description' => esc_html__('Icon yang ditampilkan saat accordion tertutup', 'textdomain'),
+            ]
+        );
+
+        $this->add_control(
+            'expand_icon',
+            [
+                'label' => esc_html__('Expand Icon', 'textdomain'),
+                'type' => \Elementor\Controls_Manager::ICONS,
+                'default' => [
+                    'value' => 'eicon-chevron-up',
+                    'library' => 'eicons',
+                ],
+                'description' => esc_html__('Icon yang ditampilkan saat accordion terbuka', 'textdomain'),
+            ]
+        );
+
+        $this->add_control(
+            'icon_position',
+            [
+                'label' => esc_html__('Icon Position', 'textdomain'),
+                'type' => \Elementor\Controls_Manager::SELECT,
+                'default' => 'right',
+                'options' => [
+                    'left' => esc_html__('Left', 'textdomain'),
+                    'right' => esc_html__('Right', 'textdomain'),
+                ],
+            ]
+        );
+
+        $this->end_controls_section();
+
         // Style Section - Accordion
         $this->start_controls_section(
             'accordion_style',
@@ -299,6 +349,18 @@ class ACF_Accordion_Widget extends \Elementor\Widget_Base {
             ]
         );
 
+        $this->add_responsive_control(
+            'title_border_radius',
+            [
+                'label' => esc_html__('Border Radius', 'textdomain'),
+                'type' => \Elementor\Controls_Manager::DIMENSIONS,
+                'size_units' => ['px', '%'],
+                'selectors' => [
+                    '{{WRAPPER}} .acf-accordion-title' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+            ]
+        );
+
         $this->end_controls_section();
 
         // Style Section - Content
@@ -461,6 +523,28 @@ class ACF_Accordion_Widget extends \Elementor\Widget_Base {
         return 'Unknown';
     }
 
+    /**
+     * Render icon HTML
+     * 
+     * @param array $icon
+     * @param string $class
+     * @return string
+     */
+    private function render_icon($icon, $class = '') {
+        if (empty($icon['value'])) {
+            return '';
+        }
+
+        $icon_html = '';
+        if ($icon['library'] === 'svg') {
+            $icon_html = $icon['value']['url'] ? '<img src="' . esc_url($icon['value']['url']) . '" alt="" class="' . esc_attr($class) . '">' : '';
+        } else {
+            $icon_html = '<i class="' . esc_attr($icon['value']) . ' ' . esc_attr($class) . '" aria-hidden="true"></i>';
+        }
+        
+        return $icon_html;
+    }
+
     protected function render() {
         $settings = $this->get_settings_for_display();
         
@@ -469,6 +553,11 @@ class ACF_Accordion_Widget extends \Elementor\Widget_Base {
         $repeater_field = $settings['acf_repeater_field'];
         $title_field = $settings['title_field'];
         $content_field = $settings['content_field'];
+
+        // Get icon settings
+        $collapse_icon = $settings['collapse_icon'];
+        $expand_icon = $settings['expand_icon'];
+        $icon_position = $settings['icon_position'];
 
         // Check if ACF or SCF is active
         if (!function_exists('get_field') && !function_exists('scf_get')) {
@@ -492,7 +581,7 @@ class ACF_Accordion_Widget extends \Elementor\Widget_Base {
         $first_item_open = $settings['first_item_open'] === 'yes';
 
         ?>
-        <div class="acf-accordion-wrapper" data-multiple="<?php echo esc_attr($multiple_open); ?>">
+        <div class="acf-accordion-wrapper" data-multiple="<?php echo esc_attr($multiple_open); ?>" data-icon-position="<?php echo esc_attr($icon_position); ?>">
             <?php foreach ($accordion_items as $index => $item) : 
             // Handle different data structures for ACF vs SCF
             if (function_exists('get_field')) {
@@ -511,12 +600,23 @@ class ACF_Accordion_Widget extends \Elementor\Widget_Base {
         ?>
                 <div class="acf-accordion-item <?php echo esc_attr($is_active); ?>">
                     <div class="acf-accordion-title" role="button" tabindex="0" aria-expanded="<?php echo $is_active ? 'true' : 'false'; ?>">
+                        <?php if ($icon_position === 'left') : ?>
+                            <span class="acf-accordion-icon acf-accordion-icon-left">
+                                <span class="acf-accordion-icon-collapse"><?php echo $this->render_icon($collapse_icon, 'collapse-icon'); ?></span>
+                                <span class="acf-accordion-icon-expand"><?php echo $this->render_icon($expand_icon, 'expand-icon'); ?></span>
+                            </span>
+                        <?php endif; ?>
+                        
                         <span class="acf-accordion-title-text">
                             <?php echo wp_kses_post($title); ?>
                         </span>
-                        <span class="acf-accordion-icon">
-                            <i class="eicon-chevron-down" aria-hidden="true"></i>
-                        </span>
+                        
+                        <?php if ($icon_position === 'right') : ?>
+                            <span class="acf-accordion-icon acf-accordion-icon-right">
+                                <span class="acf-accordion-icon-collapse"><?php echo $this->render_icon($collapse_icon, 'collapse-icon'); ?></span>
+                                <span class="acf-accordion-icon-expand"><?php echo $this->render_icon($expand_icon, 'expand-icon'); ?></span>
+                            </span>
+                        <?php endif; ?>
                     </div>
                     <div class="acf-accordion-content" style="<?php echo !$is_active ? 'display: none;' : ''; ?>">
                         <?php echo wp_kses_post($content); ?>
@@ -532,16 +632,30 @@ class ACF_Accordion_Widget extends \Elementor\Widget_Base {
         <#
         var multipleOpen = settings.multiple_open === 'yes' ? 'true' : 'false';
         var firstItemOpen = settings.first_item_open === 'yes';
+        var iconPosition = settings.icon_position || 'right';
+        var collapseIcon = settings.collapse_icon || {value: 'eicon-chevron-down', library: 'eicons'};
+        var expandIcon = settings.expand_icon || {value: 'eicon-chevron-up', library: 'eicons'};
         #>
-        <div class="acf-accordion-wrapper" data-multiple="{{{ multipleOpen }}}">
+        <div class="acf-accordion-wrapper" data-multiple="{{{ multipleOpen }}}" data-icon-position="{{{ iconPosition }}}">
             <div class="acf-accordion-item <# if (firstItemOpen) { #>active<# } #>">
                 <div class="acf-accordion-title" role="button" tabindex="0">
+                    <# if (iconPosition === 'left') { #>
+                        <span class="acf-accordion-icon acf-accordion-icon-left">
+                            <span class="acf-accordion-icon-collapse"><i class="{{{ collapseIcon.value }}}" aria-hidden="true"></i></span>
+                            <span class="acf-accordion-icon-expand"><i class="{{{ expandIcon.value }}}" aria-hidden="true"></i></span>
+                        </span>
+                    <# } #>
+                    
                     <span class="acf-accordion-title-text">
                         Sample Accordion Title
                     </span>
-                    <span class="acf-accordion-icon">
-                        <i class="eicon-chevron-down" aria-hidden="true"></i>
-                    </span>
+                    
+                    <# if (iconPosition === 'right') { #>
+                        <span class="acf-accordion-icon acf-accordion-icon-right">
+                            <span class="acf-accordion-icon-collapse"><i class="{{{ collapseIcon.value }}}" aria-hidden="true"></i></span>
+                            <span class="acf-accordion-icon-expand"><i class="{{{ expandIcon.value }}}" aria-hidden="true"></i></span>
+                        </span>
+                    <# } #>
                 </div>
                 <div class="acf-accordion-content" <# if (!firstItemOpen) { #>style="display: none;"<# } #>>
                     Sample accordion content. This will be replaced with your ACF/SCF repeater data.
@@ -549,12 +663,23 @@ class ACF_Accordion_Widget extends \Elementor\Widget_Base {
             </div>
             <div class="acf-accordion-item">
                 <div class="acf-accordion-title" role="button" tabindex="0">
+                    <# if (iconPosition === 'left') { #>
+                        <span class="acf-accordion-icon acf-accordion-icon-left">
+                            <span class="acf-accordion-icon-collapse"><i class="{{{ collapseIcon.value }}}" aria-hidden="true"></i></span>
+                            <span class="acf-accordion-icon-expand"><i class="{{{ expandIcon.value }}}" aria-hidden="true"></i></span>
+                        </span>
+                    <# } #>
+                    
                     <span class="acf-accordion-title-text">
                         Another Accordion Item
                     </span>
-                    <span class="acf-accordion-icon">
-                        <i class="eicon-chevron-down" aria-hidden="true"></i>
-                    </span>
+                    
+                    <# if (iconPosition === 'right') { #>
+                        <span class="acf-accordion-icon acf-accordion-icon-right">
+                            <span class="acf-accordion-icon-collapse"><i class="{{{ collapseIcon.value }}}" aria-hidden="true"></i></span>
+                            <span class="acf-accordion-icon-expand"><i class="{{{ expandIcon.value }}}" aria-hidden="true"></i></span>
+                        </span>
+                    <# } #>
                 </div>
                 <div class="acf-accordion-content" style="display: none;">
                     Another sample content for demonstration.

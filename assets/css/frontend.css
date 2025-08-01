@@ -73,15 +73,62 @@
 
 /* Icon styles */
 .acf-accordion-icon {
-    transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    margin-left: 10px;
+    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     font-size: 16px;
     line-height: 1;
     color: inherit;
     will-change: transform;
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
 }
 
-.acf-accordion-item.active .acf-accordion-icon {
+.acf-accordion-icon-left {
+    margin-right: 10px;
+    order: -1;
+}
+
+.acf-accordion-icon-right {
+    margin-left: 10px;
+}
+
+/* Icon state management */
+.acf-accordion-icon-collapse,
+.acf-accordion-icon-expand {
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Default state - show collapse icon */
+.acf-accordion-icon-collapse {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.acf-accordion-icon-expand {
+    opacity: 0;
+    transform: scale(0.8);
+}
+
+/* Active state - show expand icon */
+.acf-accordion-item.active .acf-accordion-icon-collapse {
+    opacity: 0;
+    transform: scale(0.8);
+}
+
+.acf-accordion-item.active .acf-accordion-icon-expand {
+    opacity: 1;
+    transform: scale(1);
+}
+
+/* Legacy support for old rotation method */
+.acf-accordion-item.active .acf-accordion-icon:not(.acf-accordion-icon-left):not(.acf-accordion-icon-right) {
     transform: rotate(180deg);
 }
 
@@ -212,6 +259,13 @@
     
     .acf-accordion-icon {
         font-size: 14px;
+    }
+    
+    .acf-accordion-icon-left {
+        margin-right: 8px;
+    }
+    
+    .acf-accordion-icon-right {
         margin-left: 8px;
     }
 }
@@ -224,6 +278,18 @@
     
     .acf-accordion-content {
         padding: 12px;
+    }
+    
+    .acf-accordion-icon {
+        font-size: 12px;
+    }
+    
+    .acf-accordion-icon-left {
+        margin-right: 6px;
+    }
+    
+    .acf-accordion-icon-right {
+        margin-left: 6px;
     }
 }
 

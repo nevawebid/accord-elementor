@@ -17,7 +17,10 @@ Plugin ini menyediakan widget Elementor khusus yang dapat mengambil data dari AC
 - ✅ Accessibility support (keyboard navigation, ARIA attributes)
 - ✅ Animasi smooth dan modern dengan jQuery
 - ✅ Custom easing functions untuk animasi yang halus
-- ✅ Smooth icon rotation dan hover effects
+- ✅ Icon yang dapat dikustomisasi (collapse/expand berbeda)
+- ✅ Icon positioning (kiri/kanan)
+- ✅ Border radius untuk title yang dapat dikustomisasi
+- ✅ Smooth icon transitions dan hover effects
 - ✅ Support untuk post ID khusus
 - ✅ JavaScript API untuk kontrol programatik
 - ✅ Dukungan ACF dan SCF (Secure Custom Fields)
@@ -72,6 +75,11 @@ Field Group: FAQ
    - **Post ID**: Kosongkan untuk post saat ini, atau masukkan ID post tertentu
    - **Open First Item**: Aktifkan untuk membuka item pertama secara default
    - **Allow Multiple Open**: Aktifkan untuk mengizinkan beberapa item terbuka bersamaan
+   
+5. Konfigurasi Icons:
+   - **Collapse Icon**: Pilih icon untuk state tertutup (default: chevron-down)
+   - **Expand Icon**: Pilih icon untuk state terbuka (default: chevron-up)  
+   - **Icon Position**: Pilih posisi icon (kiri atau kanan)
 
 ### 3. Styling
 
@@ -87,6 +95,7 @@ Widget menyediakan berbagai opsi styling melalui Elementor:
 - Warna (normal, hover, active)
 - Background color
 - Padding
+- Border radius
 
 #### Content Settings
 - Typography
@@ -95,6 +104,9 @@ Widget menyediakan berbagai opsi styling melalui Elementor:
 - Border
 
 #### Icon Settings
+- **Collapse Icon**: Icon yang ditampilkan saat accordion tertutup
+- **Expand Icon**: Icon yang ditampilkan saat accordion terbuka
+- **Icon Position**: Posisi icon (kiri atau kanan dari title)
 - Ukuran icon
 - Warna icon
 - Jarak dari teks

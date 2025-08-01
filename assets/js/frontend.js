@@ -113,11 +113,17 @@
         $item.addClass('active');
         $title.attr('aria-expanded', 'true');
         
-        // Smooth icon rotation
-        $icon.css({
-            'transition': 'transform ' + accordionConfig.iconRotationDuration + 'ms ease-in-out',
-            'transform': 'rotate(180deg)'
-        });
+        // Handle icon animation based on type
+        if ($icon.hasClass('acf-accordion-icon-left') || $icon.hasClass('acf-accordion-icon-right')) {
+            // New icon system - CSS handles the transition
+            // No additional JavaScript needed
+        } else {
+            // Legacy icon rotation
+            $icon.css({
+                'transition': 'transform ' + accordionConfig.iconRotationDuration + 'ms ease-in-out',
+                'transform': 'rotate(180deg)'
+            });
+        }
         
         // Smooth slide down animation with custom easing
         $content.stop(true, true).slideDown({
@@ -146,11 +152,17 @@
         
         $title.attr('aria-expanded', 'false');
         
-        // Smooth icon rotation back to original position
-        $icon.css({
-            'transition': 'transform ' + accordionConfig.iconRotationDuration + 'ms ease-in-out',
-            'transform': 'rotate(0deg)'
-        });
+        // Handle icon animation based on type
+        if ($icon.hasClass('acf-accordion-icon-left') || $icon.hasClass('acf-accordion-icon-right')) {
+            // New icon system - CSS handles the transition
+            // No additional JavaScript needed
+        } else {
+            // Legacy icon rotation back to original position
+            $icon.css({
+                'transition': 'transform ' + accordionConfig.iconRotationDuration + 'ms ease-in-out',
+                'transform': 'rotate(0deg)'
+            });
+        }
         
         // Smooth slide up animation with custom easing
         $content.stop(true, true).slideUp({

@@ -15,10 +15,13 @@ Plugin ini menyediakan widget Elementor khusus yang dapat mengambil data dari AC
 - ✅ Opsi untuk mengizinkan beberapa item terbuka bersamaan
 - ✅ Responsif dan mobile-friendly
 - ✅ Accessibility support (keyboard navigation, ARIA attributes)
-- ✅ Animasi smooth dan modern
+- ✅ Animasi smooth dan modern dengan jQuery
+- ✅ Custom easing functions untuk animasi yang halus
+- ✅ Smooth icon rotation dan hover effects
 - ✅ Support untuk post ID khusus
 - ✅ JavaScript API untuk kontrol programatik
 - ✅ Dukungan ACF dan SCF (Secure Custom Fields)
+- ✅ Konfigurasi animasi yang dapat dikustomisasi
 
 ## Persyaratan Sistem
 
@@ -101,6 +104,16 @@ Widget menyediakan berbagai opsi styling melalui Elementor:
 Plugin menyediakan JavaScript API untuk kontrol programatik:
 
 ```javascript
+// Mengkonfigurasi animasi
+ACFAccordion.configure({
+    animationDuration: 500,        // Durasi animasi slide (ms)
+    animationEasing: 'easeInOutQuart',  // Jenis easing
+    iconRotationDuration: 300      // Durasi rotasi icon (ms)
+});
+
+// Mendapatkan konfigurasi saat ini
+var config = ACFAccordion.getConfig();
+
 // Membuka item accordion tertentu
 ACFAccordion.open('.acf-accordion-item:first');
 
@@ -115,6 +128,25 @@ ACFAccordion.openAll('.acf-accordion-wrapper');
 
 // Menutup semua item
 ACFAccordion.closeAll('.acf-accordion-wrapper');
+```
+
+### Kustomisasi Animasi
+
+Plugin menggunakan animasi jQuery yang smooth dengan custom easing. Anda bisa mengkustomisasi:
+
+```javascript
+// Contoh konfigurasi animasi yang lebih cepat
+ACFAccordion.configure({
+    animationDuration: 250,
+    iconRotationDuration: 200
+});
+
+// Contoh konfigurasi animasi yang lebih lambat dan halus
+ACFAccordion.configure({
+    animationDuration: 600,
+    animationEasing: 'easeInOutQuart',
+    iconRotationDuration: 400
+});
 ```
 
 ## Events

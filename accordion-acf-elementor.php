@@ -1,8 +1,8 @@
 <?php
 /**
  * Plugin Name: ACF/SCF Accordion for Elementor
- * Plugin URI: https://nevaweb.id
- * Description: Plugin untuk menampilkan data ACF atau SCF Repeater dalam format accordion menggunakan Elementor widget.
+ * Plugin URI: https://github.com/nevawebid/accord-elementor
+ * Description: A WordPress plugin that displays ACF (Advanced Custom Fields) or SCF (Secure Custom Fields) Repeater data as responsive accordion using Elementor widget. Fully customizable with smooth animations and accessibility support.
  * Version: 1.0.0
  * Author: Nevaweb
  * Author URI: https://nevaweb.id
@@ -14,11 +14,31 @@
  * Network: false
  * License: GPL v2 or later
  * License URI: https://www.gnu.org/licenses/gpl-2.0.html
+ * 
+ * @package ACF_SCF_Accordion_Elementor
+ * @author Nevaweb
+ * @copyright 2025 Nevaweb
+ * @license GPL-2.0-or-later
+ * 
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 2 of the License, or
+ * (at your option) any later version.
+ * 
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
  */
 
 // Prevent direct access
 if (!defined('ABSPATH')) {
-    exit;
+    exit('Direct access forbidden.');
+}
+
+// Security check
+if (!function_exists('add_action')) {
+    exit('WordPress environment required.');
 }
 
 // Define plugin constants
@@ -57,6 +77,9 @@ class ACF_Accordion_Elementor_Plugin {
      * Initialize the plugin
      */
     public function init() {
+        // Load text domain for internationalization
+        add_action('init', [$this, 'load_textdomain']);
+        
         // Check if Elementor is installed and activated
         if (!did_action('elementor/loaded')) {
             add_action('admin_notices', [$this, 'admin_notice_missing_elementor']);
@@ -80,13 +103,10 @@ class ACF_Accordion_Elementor_Plugin {
         add_action('elementor/widgets/register', [$this, 'register_widgets']);
         add_action('elementor/frontend/after_enqueue_styles', [$this, 'enqueue_frontend_styles']);
         add_action('elementor/frontend/after_register_scripts', [$this, 'enqueue_frontend_scripts']);
-
-        // Load plugin textdomain for translations
-        add_action('init', [$this, 'load_textdomain']);
     }
 
     /**
-     * Load plugin textdomain
+     * Load plugin textdomain for internationalization
      */
     public function load_textdomain() {
         load_plugin_textdomain(

@@ -4,8 +4,14 @@
  * Widget ini mengambil data dari ACF atau SCF Repeater field dan menampilkannya dalam format accordion
  */
 
+// Prevent direct access
 if (!defined('ABSPATH')) {
-    exit; // Exit if accessed directly.
+    exit('Direct access forbidden.');
+}
+
+// Security check
+if (!function_exists('add_action')) {
+    exit('WordPress environment required.');
 }
 
 class ACF_Accordion_Widget extends \Elementor\Widget_Base {
@@ -15,7 +21,7 @@ class ACF_Accordion_Widget extends \Elementor\Widget_Base {
     }
 
     public function get_title() {
-        return esc_html__('ACF/SCF Accordion', 'textdomain');
+        return esc_html__('ACF/SCF Accordion', 'acf-accordion-elementor');
     }
 
     public function get_icon() {
@@ -36,7 +42,7 @@ class ACF_Accordion_Widget extends \Elementor\Widget_Base {
         $this->start_controls_section(
             'content_section',
             [
-                'label' => esc_html__('Content', 'textdomain'),
+                'label' => esc_html__('Content', 'acf-accordion-elementor'),
                 'tab' => \Elementor\Controls_Manager::TAB_CONTENT,
             ]
         );
@@ -44,53 +50,53 @@ class ACF_Accordion_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'acf_repeater_field',
             [
-                'label' => esc_html__('Repeater Field Name', 'textdomain'),
+                'label' => esc_html__('Repeater Field Name', 'acf-accordion-elementor'),
                 'type' => \Elementor\Controls_Manager::TEXT,
                 'default' => 'accordion_items',
-                'placeholder' => esc_html__('Enter repeater field name', 'textdomain'),
-                'description' => esc_html__('Masukkan nama field Repeater dari ACF atau SCF yang berisi data accordion', 'textdomain'),
+                'placeholder' => esc_html__('Enter repeater field name', 'acf-accordion-elementor'),
+                'description' => esc_html__('Masukkan nama field Repeater dari ACF atau SCF yang berisi data accordion', 'acf-accordion-elementor'),
             ]
         );
 
         $this->add_control(
             'title_field',
             [
-                'label' => esc_html__('Title Sub Field Name', 'textdomain'),
+                'label' => esc_html__('Title Sub Field Name', 'acf-accordion-elementor'),
                 'type' => \Elementor\Controls_Manager::TEXT,
                 'default' => 'title',
-                'placeholder' => esc_html__('Enter title sub field name', 'textdomain'),
-                'description' => esc_html__('Nama sub field untuk judul accordion', 'textdomain'),
+                'placeholder' => esc_html__('Enter title sub field name', 'acf-accordion-elementor'),
+                'description' => esc_html__('Nama sub field untuk judul accordion', 'acf-accordion-elementor'),
             ]
         );
 
         $this->add_control(
             'content_field',
             [
-                'label' => esc_html__('Content Sub Field Name', 'textdomain'),
+                'label' => esc_html__('Content Sub Field Name', 'acf-accordion-elementor'),
                 'type' => \Elementor\Controls_Manager::TEXT,
                 'default' => 'content',
-                'placeholder' => esc_html__('Enter content sub field name', 'textdomain'),
-                'description' => esc_html__('Nama sub field untuk konten accordion', 'textdomain'),
+                'placeholder' => esc_html__('Enter content sub field name', 'acf-accordion-elementor'),
+                'description' => esc_html__('Nama sub field untuk konten accordion', 'acf-accordion-elementor'),
             ]
         );
 
         $this->add_control(
             'post_id',
             [
-                'label' => esc_html__('Post ID (Optional)', 'textdomain'),
+                'label' => esc_html__('Post ID (Optional)', 'acf-accordion-elementor'),
                 'type' => \Elementor\Controls_Manager::TEXT,
-                'placeholder' => esc_html__('Leave empty for current post', 'textdomain'),
-                'description' => esc_html__('Kosongkan untuk menggunakan post saat ini, atau masukkan ID post tertentu', 'textdomain'),
+                'placeholder' => esc_html__('Leave empty for current post', 'acf-accordion-elementor'),
+                'description' => esc_html__('Kosongkan untuk menggunakan post saat ini, atau masukkan ID post tertentu', 'acf-accordion-elementor'),
             ]
         );
 
         $this->add_control(
             'first_item_open',
             [
-                'label' => esc_html__('Open First Item', 'textdomain'),
+                'label' => esc_html__('Open First Item', 'acf-accordion-elementor'),
                 'type' => \Elementor\Controls_Manager::SWITCHER,
-                'label_on' => esc_html__('Yes', 'textdomain'),
-                'label_off' => esc_html__('No', 'textdomain'),
+                'label_on' => esc_html__('Yes', 'acf-accordion-elementor'),
+                'label_off' => esc_html__('No', 'acf-accordion-elementor'),
                 'return_value' => 'yes',
                 'default' => 'no',
             ]
@@ -99,13 +105,13 @@ class ACF_Accordion_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'multiple_open',
             [
-                'label' => esc_html__('Allow Multiple Open', 'textdomain'),
+                'label' => esc_html__('Allow Multiple Open', 'acf-accordion-elementor'),
                 'type' => \Elementor\Controls_Manager::SWITCHER,
-                'label_on' => esc_html__('Yes', 'textdomain'),
-                'label_off' => esc_html__('No', 'textdomain'),
+                'label_on' => esc_html__('Yes', 'acf-accordion-elementor'),
+                'label_off' => esc_html__('No', 'acf-accordion-elementor'),
                 'return_value' => 'yes',
                 'default' => 'no',
-                'description' => esc_html__('Izinkan beberapa item accordion terbuka bersamaan', 'textdomain'),
+                'description' => esc_html__('Izinkan beberapa item accordion terbuka bersamaan', 'acf-accordion-elementor'),
             ]
         );
 
@@ -115,7 +121,7 @@ class ACF_Accordion_Widget extends \Elementor\Widget_Base {
         $this->start_controls_section(
             'icon_section',
             [
-                'label' => esc_html__('Icons', 'textdomain'),
+                'label' => esc_html__('Icons', 'acf-accordion-elementor'),
                 'tab' => \Elementor\Controls_Manager::TAB_CONTENT,
             ]
         );
@@ -123,38 +129,38 @@ class ACF_Accordion_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'collapse_icon',
             [
-                'label' => esc_html__('Collapse Icon', 'textdomain'),
+                'label' => esc_html__('Collapse Icon', 'acf-accordion-elementor'),
                 'type' => \Elementor\Controls_Manager::ICONS,
                 'default' => [
                     'value' => 'eicon-chevron-down',
                     'library' => 'eicons',
                 ],
-                'description' => esc_html__('Icon yang ditampilkan saat accordion tertutup', 'textdomain'),
+                'description' => esc_html__('Icon yang ditampilkan saat accordion tertutup', 'acf-accordion-elementor'),
             ]
         );
 
         $this->add_control(
             'expand_icon',
             [
-                'label' => esc_html__('Expand Icon', 'textdomain'),
+                'label' => esc_html__('Expand Icon', 'acf-accordion-elementor'),
                 'type' => \Elementor\Controls_Manager::ICONS,
                 'default' => [
                     'value' => 'eicon-chevron-up',
                     'library' => 'eicons',
                 ],
-                'description' => esc_html__('Icon yang ditampilkan saat accordion terbuka', 'textdomain'),
+                'description' => esc_html__('Icon yang ditampilkan saat accordion terbuka', 'acf-accordion-elementor'),
             ]
         );
 
         $this->add_control(
             'icon_position',
             [
-                'label' => esc_html__('Icon Position', 'textdomain'),
+                'label' => esc_html__('Icon Position', 'acf-accordion-elementor'),
                 'type' => \Elementor\Controls_Manager::SELECT,
                 'default' => 'right',
                 'options' => [
-                    'left' => esc_html__('Left', 'textdomain'),
-                    'right' => esc_html__('Right', 'textdomain'),
+                    'left' => esc_html__('Left', 'acf-accordion-elementor'),
+                    'right' => esc_html__('Right', 'acf-accordion-elementor'),
                 ],
             ]
         );
@@ -165,7 +171,7 @@ class ACF_Accordion_Widget extends \Elementor\Widget_Base {
         $this->start_controls_section(
             'accordion_style',
             [
-                'label' => esc_html__('Accordion', 'textdomain'),
+                'label' => esc_html__('Accordion', 'acf-accordion-elementor'),
                 'tab' => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
@@ -173,7 +179,7 @@ class ACF_Accordion_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'accordion_spacing',
             [
-                'label' => esc_html__('Spacing Between Items', 'textdomain'),
+                'label' => esc_html__('Spacing Between Items', 'acf-accordion-elementor'),
                 'type' => \Elementor\Controls_Manager::SLIDER,
                 'size_units' => ['px', 'em'],
                 'range' => [
@@ -203,7 +209,7 @@ class ACF_Accordion_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'accordion_border_radius',
             [
-                'label' => esc_html__('Border Radius', 'textdomain'),
+                'label' => esc_html__('Border Radius', 'acf-accordion-elementor'),
                 'type' => \Elementor\Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', '%'],
                 'selectors' => [
@@ -226,7 +232,7 @@ class ACF_Accordion_Widget extends \Elementor\Widget_Base {
         $this->start_controls_section(
             'title_style',
             [
-                'label' => esc_html__('Title', 'textdomain'),
+                'label' => esc_html__('Title', 'acf-accordion-elementor'),
                 'tab' => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
@@ -244,14 +250,14 @@ class ACF_Accordion_Widget extends \Elementor\Widget_Base {
         $this->start_controls_tab(
             'title_normal_tab',
             [
-                'label' => esc_html__('Normal', 'textdomain'),
+                'label' => esc_html__('Normal', 'acf-accordion-elementor'),
             ]
         );
 
         $this->add_control(
             'title_color',
             [
-                'label' => esc_html__('Color', 'textdomain'),
+                'label' => esc_html__('Color', 'acf-accordion-elementor'),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .acf-accordion-title' => 'color: {{VALUE}};',
@@ -262,7 +268,7 @@ class ACF_Accordion_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'title_background_color',
             [
-                'label' => esc_html__('Background Color', 'textdomain'),
+                'label' => esc_html__('Background Color', 'acf-accordion-elementor'),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .acf-accordion-title' => 'background-color: {{VALUE}};',
@@ -275,14 +281,14 @@ class ACF_Accordion_Widget extends \Elementor\Widget_Base {
         $this->start_controls_tab(
             'title_hover_tab',
             [
-                'label' => esc_html__('Hover', 'textdomain'),
+                'label' => esc_html__('Hover', 'acf-accordion-elementor'),
             ]
         );
 
         $this->add_control(
             'title_hover_color',
             [
-                'label' => esc_html__('Color', 'textdomain'),
+                'label' => esc_html__('Color', 'acf-accordion-elementor'),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .acf-accordion-title:hover' => 'color: {{VALUE}};',
@@ -293,7 +299,7 @@ class ACF_Accordion_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'title_hover_background_color',
             [
-                'label' => esc_html__('Background Color', 'textdomain'),
+                'label' => esc_html__('Background Color', 'acf-accordion-elementor'),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .acf-accordion-title:hover' => 'background-color: {{VALUE}};',
@@ -306,14 +312,14 @@ class ACF_Accordion_Widget extends \Elementor\Widget_Base {
         $this->start_controls_tab(
             'title_active_tab',
             [
-                'label' => esc_html__('Active', 'textdomain'),
+                'label' => esc_html__('Active', 'acf-accordion-elementor'),
             ]
         );
 
         $this->add_control(
             'title_active_color',
             [
-                'label' => esc_html__('Color', 'textdomain'),
+                'label' => esc_html__('Color', 'acf-accordion-elementor'),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .acf-accordion-item.active .acf-accordion-title' => 'color: {{VALUE}};',
@@ -324,7 +330,7 @@ class ACF_Accordion_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'title_active_background_color',
             [
-                'label' => esc_html__('Background Color', 'textdomain'),
+                'label' => esc_html__('Background Color', 'acf-accordion-elementor'),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .acf-accordion-item.active .acf-accordion-title' => 'background-color: {{VALUE}};',
@@ -339,7 +345,7 @@ class ACF_Accordion_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'title_padding',
             [
-                'label' => esc_html__('Padding', 'textdomain'),
+                'label' => esc_html__('Padding', 'acf-accordion-elementor'),
                 'type' => \Elementor\Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', 'em', '%'],
                 'selectors' => [
@@ -352,7 +358,7 @@ class ACF_Accordion_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'title_border_radius',
             [
-                'label' => esc_html__('Border Radius', 'textdomain'),
+                'label' => esc_html__('Border Radius', 'acf-accordion-elementor'),
                 'type' => \Elementor\Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', '%'],
                 'selectors' => [
@@ -367,7 +373,7 @@ class ACF_Accordion_Widget extends \Elementor\Widget_Base {
         $this->start_controls_section(
             'content_style',
             [
-                'label' => esc_html__('Content', 'textdomain'),
+                'label' => esc_html__('Content', 'acf-accordion-elementor'),
                 'tab' => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
@@ -383,7 +389,7 @@ class ACF_Accordion_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'content_color',
             [
-                'label' => esc_html__('Color', 'textdomain'),
+                'label' => esc_html__('Color', 'acf-accordion-elementor'),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .acf-accordion-content' => 'color: {{VALUE}};',
@@ -394,7 +400,7 @@ class ACF_Accordion_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'content_background_color',
             [
-                'label' => esc_html__('Background Color', 'textdomain'),
+                'label' => esc_html__('Background Color', 'acf-accordion-elementor'),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .acf-accordion-content' => 'background-color: {{VALUE}};',
@@ -405,7 +411,7 @@ class ACF_Accordion_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'content_padding',
             [
-                'label' => esc_html__('Padding', 'textdomain'),
+                'label' => esc_html__('Padding', 'acf-accordion-elementor'),
                 'type' => \Elementor\Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', 'em', '%'],
                 'selectors' => [
@@ -428,7 +434,7 @@ class ACF_Accordion_Widget extends \Elementor\Widget_Base {
         $this->start_controls_section(
             'icon_style',
             [
-                'label' => esc_html__('Icon', 'textdomain'),
+                'label' => esc_html__('Icon', 'acf-accordion-elementor'),
                 'tab' => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
@@ -436,7 +442,7 @@ class ACF_Accordion_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'icon_size',
             [
-                'label' => esc_html__('Size', 'textdomain'),
+                'label' => esc_html__('Size', 'acf-accordion-elementor'),
                 'type' => \Elementor\Controls_Manager::SLIDER,
                 'size_units' => ['px', 'em'],
                 'range' => [
@@ -458,7 +464,7 @@ class ACF_Accordion_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'icon_color',
             [
-                'label' => esc_html__('Color', 'textdomain'),
+                'label' => esc_html__('Color', 'acf-accordion-elementor'),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .acf-accordion-icon' => 'color: {{VALUE}};',
@@ -469,7 +475,7 @@ class ACF_Accordion_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'icon_spacing',
             [
-                'label' => esc_html__('Spacing', 'textdomain'),
+                'label' => esc_html__('Spacing', 'acf-accordion-elementor'),
                 'type' => \Elementor\Controls_Manager::SLIDER,
                 'size_units' => ['px', 'em'],
                 'range' => [
@@ -548,21 +554,29 @@ class ACF_Accordion_Widget extends \Elementor\Widget_Base {
     protected function render() {
         $settings = $this->get_settings_for_display();
         
-        // Get ACF data
-        $post_id = !empty($settings['post_id']) ? intval($settings['post_id']) : get_the_ID();
-        $repeater_field = $settings['acf_repeater_field'];
-        $title_field = $settings['title_field'];
-        $content_field = $settings['content_field'];
+        // Sanitize and validate inputs
+        $post_id = !empty($settings['post_id']) ? absint($settings['post_id']) : get_the_ID();
+        $repeater_field = !empty($settings['acf_repeater_field']) ? sanitize_key($settings['acf_repeater_field']) : 'accordion_items';
+        $title_field = !empty($settings['title_field']) ? sanitize_key($settings['title_field']) : 'title';
+        $content_field = !empty($settings['content_field']) ? sanitize_key($settings['content_field']) : 'content';
 
-        // Get icon settings
-        $collapse_icon = $settings['collapse_icon'];
-        $expand_icon = $settings['expand_icon'];
-        $icon_position = $settings['icon_position'];
+        // Validate post ID exists
+        if ($post_id && !get_post($post_id)) {
+            echo '<div class="acf-accordion-error">';
+            echo esc_html__('Invalid Post ID specified.', 'acf-accordion-elementor');
+            echo '</div>';
+            return;
+        }
+
+        // Get icon settings with fallbacks
+        $collapse_icon = !empty($settings['collapse_icon']) ? $settings['collapse_icon'] : ['value' => 'eicon-chevron-down', 'library' => 'eicons'];
+        $expand_icon = !empty($settings['expand_icon']) ? $settings['expand_icon'] : ['value' => 'eicon-chevron-up', 'library' => 'eicons'];
+        $icon_position = !empty($settings['icon_position']) ? sanitize_key($settings['icon_position']) : 'right';
 
         // Check if ACF or SCF is active
         if (!function_exists('get_field') && !function_exists('scf_get')) {
             echo '<div class="acf-accordion-error">';
-            echo esc_html__('Advanced Custom Fields (ACF) or Secure Custom Fields (SCF) plugin is required for this widget.', 'textdomain');
+            echo esc_html__('Advanced Custom Fields (ACF) or Secure Custom Fields (SCF) plugin is required for this widget.', 'acf-accordion-elementor');
             echo '</div>';
             return;
         }
@@ -572,7 +586,7 @@ class ACF_Accordion_Widget extends \Elementor\Widget_Base {
 
         if (!$accordion_items || !is_array($accordion_items)) {
             echo '<div class="acf-accordion-error">';
-            echo esc_html__('No accordion items found or field name is incorrect. Make sure your repeater field contains data.', 'textdomain');
+            echo esc_html__('No accordion items found or field name is incorrect. Make sure your repeater field contains data.', 'acf-accordion-elementor');
             echo '</div>';
             return;
         }

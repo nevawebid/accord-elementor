@@ -1,0 +1,179 @@
+# Copyright (C) 2025 Nevaweb
+# This file is distributed under the GPL v2 or later.
+msgid ""
+msgstr ""
+"Project-Id-Version: ACF/SCF Accordion for Elementor 1.0.0\n"
+"Report-Msgid-Bugs-To: https://nevaweb.id\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2025-01-07T00:00:00+00:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WordPress\n"
+"X-Domain: acf-accordion-elementor\n"
+
+#: acordion-acf-elementor.php:158
+msgid "\"%1$s\" requires \"%2$s\" to be installed and activated."
+msgstr ""
+
+#: acordion-acf-elementor.php:159
+msgid "ACF/SCF Accordion for Elementor"
+msgstr ""
+
+#: acordion-acf-elementor.php:160
+msgid "Elementor"
+msgstr ""
+
+#: acordion-acf-elementor.php:181
+msgid "\"%1$s\" requires \"%2$s\" version %3$s or greater."
+msgstr ""
+
+#: acordion-acf-elementor.php:204
+msgid "\"%1$s\" requires \"%2$s\" or \"%3$s\" to be installed and activated."
+msgstr ""
+
+#: acordion-acf-elementor.php:206
+msgid "Advanced Custom Fields (ACF)"
+msgstr ""
+
+#: acordion-acf-elementor.php:207
+msgid "Secure Custom Fields (SCF)"
+msgstr ""
+
+#: acf-accordion-widget.php:40
+msgid "ACF/SCF Accordion"
+msgstr ""
+
+#: acf-accordion-widget.php:41
+msgid "Display ACF or SCF Repeater data as accordion"
+msgstr ""
+
+#: acf-accordion-widget.php:75
+msgid "Content"
+msgstr ""
+
+#: acf-accordion-widget.php:82
+msgid "ACF/SCF Post ID"
+msgstr ""
+
+#: acf-accordion-widget.php:84
+msgid "Enter the post ID to get ACF/SCF data from (leave empty for current post)"
+msgstr ""
+
+#: acf-accordion-widget.php:95
+msgid "Repeater Field Name"
+msgstr ""
+
+#: acf-accordion-widget.php:97
+msgid "Enter the name of the ACF/SCF repeater field"
+msgstr ""
+
+#: acf-accordion-widget.php:108
+msgid "Title Field Name"
+msgstr ""
+
+#: acf-accordion-widget.php:110
+msgid "Enter the name of the title field within the repeater"
+msgstr ""
+
+#: acf-accordion-widget.php:121
+msgid "Content Field Name"
+msgstr ""
+
+#: acf-accordion-widget.php:123
+msgid "Enter the name of the content field within the repeater"
+msgstr ""
+
+#: acf-accordion-widget.php:136
+msgid "Icons"
+msgstr ""
+
+#: acf-accordion-widget.php:143
+msgid "Collapse Icon"
+msgstr ""
+
+#: acf-accordion-widget.php:145
+msgid "Choose icon for collapsed state"
+msgstr ""
+
+#: acf-accordion-widget.php:159
+msgid "Expand Icon"
+msgstr ""
+
+#: acf-accordion-widget.php:161
+msgid "Choose icon for expanded state"
+msgstr ""
+
+#: acf-accordion-widget.php:175
+msgid "Icon Position"
+msgstr ""
+
+#: acf-accordion-widget.php:179
+msgid "Left"
+msgstr ""
+
+#: acf-accordion-widget.php:180
+msgid "Right"
+msgstr ""
+
+#: acf-accordion-widget.php:193
+msgid "Style"
+msgstr ""
+
+#: acf-accordion-widget.php:200
+msgid "Title Border Radius"
+msgstr ""
+
+#: acf-accordion-widget.php:202
+msgid "px"
+msgstr ""
+
+#: acf-accordion-widget.php:212
+msgid "Animation"
+msgstr ""
+
+#: acf-accordion-widget.php:219
+msgid "Animation Duration"
+msgstr ""
+
+#: acf-accordion-widget.php:221
+msgid "Duration in milliseconds"
+msgstr ""
+
+#: acf-accordion-widget.php:231
+msgid "Animation Easing"
+msgstr ""
+
+#: acf-accordion-widget.php:235
+msgid "Linear"
+msgstr ""
+
+#: acf-accordion-widget.php:236
+msgid "Ease"
+msgstr ""
+
+#: acf-accordion-widget.php:237
+msgid "Ease In"
+msgstr ""
+
+#: acf-accordion-widget.php:238
+msgid "Ease Out"
+msgstr ""
+
+#: acf-accordion-widget.php:239
+msgid "Ease In Out"
+msgstr ""
+
+#: acf-accordion-widget.php:240
+msgid "Custom (easeInOutQuart)"
+msgstr ""
+
+#: acf-accordion-widget.php:251
+msgid "Enable Smooth Animation"
+msgstr ""
+
+#: acf-accordion-widget.php:253
+msgid "Enable smooth jQuery animations for better user experience"
+msgstr ""

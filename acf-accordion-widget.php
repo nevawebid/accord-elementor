@@ -1,7 +1,7 @@
 <?php
 /**
- * ACF/SCF Accordion Widget untuk Elementor
- * Widget ini mengambil data dari ACF atau SCF Repeater field dan menampilkannya dalam format accordion
+ * ACF/SCF Accordion Widget for Elementor
+ * This widget takes data from ACF or SCF Repeater field and displays it in accordion format
  */
 
 // Prevent direct access
@@ -54,7 +54,7 @@ class ACF_Accordion_Widget extends \Elementor\Widget_Base {
                 'type' => \Elementor\Controls_Manager::TEXT,
                 'default' => 'accordion_items',
                 'placeholder' => esc_html__('Enter repeater field name', 'acf-accordion-elementor'),
-                'description' => esc_html__('Masukkan nama field Repeater dari ACF atau SCF yang berisi data accordion', 'acf-accordion-elementor'),
+                'description' => esc_html__('Enter the Repeater field name from ACF or SCF that contains accordion data', 'acf-accordion-elementor'),
             ]
         );
 
@@ -65,7 +65,7 @@ class ACF_Accordion_Widget extends \Elementor\Widget_Base {
                 'type' => \Elementor\Controls_Manager::TEXT,
                 'default' => 'title',
                 'placeholder' => esc_html__('Enter title sub field name', 'acf-accordion-elementor'),
-                'description' => esc_html__('Nama sub field untuk judul accordion', 'acf-accordion-elementor'),
+                'description' => esc_html__('Sub field name for accordion title', 'acf-accordion-elementor'),
             ]
         );
 
@@ -76,7 +76,7 @@ class ACF_Accordion_Widget extends \Elementor\Widget_Base {
                 'type' => \Elementor\Controls_Manager::TEXT,
                 'default' => 'content',
                 'placeholder' => esc_html__('Enter content sub field name', 'acf-accordion-elementor'),
-                'description' => esc_html__('Nama sub field untuk konten accordion', 'acf-accordion-elementor'),
+                'description' => esc_html__('Sub field name for accordion content', 'acf-accordion-elementor'),
             ]
         );
 
@@ -86,7 +86,7 @@ class ACF_Accordion_Widget extends \Elementor\Widget_Base {
                 'label' => esc_html__('Post ID (Optional)', 'acf-accordion-elementor'),
                 'type' => \Elementor\Controls_Manager::TEXT,
                 'placeholder' => esc_html__('Leave empty for current post', 'acf-accordion-elementor'),
-                'description' => esc_html__('Kosongkan untuk menggunakan post saat ini, atau masukkan ID post tertentu', 'acf-accordion-elementor'),
+                'description' => esc_html__('Leave empty to use current post, or enter a specific post ID', 'acf-accordion-elementor'),
             ]
         );
 
@@ -111,7 +111,7 @@ class ACF_Accordion_Widget extends \Elementor\Widget_Base {
                 'label_off' => esc_html__('No', 'acf-accordion-elementor'),
                 'return_value' => 'yes',
                 'default' => 'no',
-                'description' => esc_html__('Izinkan beberapa item accordion terbuka bersamaan', 'acf-accordion-elementor'),
+                'description' => esc_html__('Allow multiple accordion items to be open simultaneously', 'acf-accordion-elementor'),
             ]
         );
 
@@ -135,7 +135,7 @@ class ACF_Accordion_Widget extends \Elementor\Widget_Base {
                     'value' => 'eicon-chevron-down',
                     'library' => 'eicons',
                 ],
-                'description' => esc_html__('Icon yang ditampilkan saat accordion tertutup', 'acf-accordion-elementor'),
+                'description' => esc_html__('Icon displayed when accordion is closed', 'acf-accordion-elementor'),
             ]
         );
 
@@ -148,7 +148,7 @@ class ACF_Accordion_Widget extends \Elementor\Widget_Base {
                     'value' => 'eicon-chevron-up',
                     'library' => 'eicons',
                 ],
-                'description' => esc_html__('Icon yang ditampilkan saat accordion terbuka', 'acf-accordion-elementor'),
+                'description' => esc_html__('Icon displayed when accordion is open', 'acf-accordion-elementor'),
             ]
         );
 

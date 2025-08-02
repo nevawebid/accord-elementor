@@ -1,60 +1,60 @@
 # ACF/SCF Accordion for Elementor
 
-Plugin WordPress yang memungkinkan Anda menampilkan data dari ACF (Advanced Custom Fields) atau SCF (Secure Custom Fields) Repeater dalam format accordion menggunakan Elementor widget.
+A WordPress plugin that allows you to display data from ACF (Advanced Custom Fields) or SCF (Secure Custom Fields) Repeater in accordion format using an Elementor widget.
 
-## Deskripsi
+## Description
 
-Plugin ini menyediakan widget Elementor khusus yang dapat mengambil data dari ACF atau SCF Repeater field dan menampilkannya dalam format accordion yang responsif dan dapat dikustomisasi.
+This plugin provides a custom Elementor widget that can retrieve data from ACF or SCF Repeater fields and display it in a responsive and customizable accordion format.
 
-## Fitur
+## Features
 
-- ✅ Integrasi penuh dengan ACF dan SCF Repeater fields
-- ✅ Widget Elementor yang mudah digunakan
-- ✅ Styling yang dapat dikustomisasi melalui Elementor
-- ✅ Opsi untuk membuka item pertama secara default
-- ✅ Opsi untuk mengizinkan beberapa item terbuka bersamaan
-- ✅ Responsif dan mobile-friendly
+- ✅ Full integration with ACF and SCF Repeater fields
+- ✅ Easy-to-use Elementor widget
+- ✅ Customizable styling through Elementor
+- ✅ Option to open the first item by default
+- ✅ Option to allow multiple items to be open simultaneously
+- ✅ Responsive and mobile-friendly
 - ✅ Accessibility support (keyboard navigation, ARIA attributes)
-- ✅ Animasi smooth dan modern dengan jQuery
-- ✅ Custom easing functions untuk animasi yang halus
-- ✅ Icon yang dapat dikustomisasi (collapse/expand berbeda)
-- ✅ Icon positioning (kiri/kanan)
-- ✅ Border radius untuk title yang dapat dikustomisasi
-- ✅ Smooth icon transitions dan hover effects
-- ✅ Icon color states (normal, hover, active) yang dapat dikustomisasi
-- ✅ Support untuk post ID khusus
-- ✅ JavaScript API untuk kontrol programatik
-- ✅ Dukungan ACF dan SCF (Secure Custom Fields)
-- ✅ Konfigurasi animasi yang dapat dikustomisasi
+- ✅ Smooth and modern animations with jQuery
+- ✅ Custom easing functions for smooth animations
+- ✅ Customizable icons (different collapse/expand icons)
+- ✅ Icon positioning (left/right)
+- ✅ Customizable border radius for titles
+- ✅ Smooth icon transitions and hover effects
+- ✅ Customizable icon color states (normal, hover, active)
+- ✅ Support for specific post IDs
+- ✅ JavaScript API for programmatic control
+- ✅ Support for ACF and SCF (Secure Custom Fields)
+- ✅ Customizable animation configuration
 
-## Persyaratan Sistem
+## System Requirements
 
-- WordPress 5.0 atau lebih baru
-- PHP 7.4 atau lebih baru
-- Elementor 3.0.0 atau lebih baru
-- Advanced Custom Fields (ACF) plugin ATAU Secure Custom Fields (SCF) plugin
+- WordPress 5.0 or newer
+- PHP 7.4 or newer
+- Elementor 3.0.0 or newer
+- Advanced Custom Fields (ACF) plugin OR Secure Custom Fields (SCF) plugin
 
-## Instalasi
+## Installation
 
-1. Upload folder plugin ke direktori `/wp-content/plugins/`
-2. Aktifkan plugin melalui menu 'Plugins' di WordPress admin
-3. Pastikan Elementor dan ACF/SCF sudah terinstall dan aktif
+1. Upload the plugin folder to the `/wp-content/plugins/` directory
+2. Activate the plugin through the 'Plugins' menu in WordPress admin
+3. Make sure Elementor and ACF/SCF are installed and active
 
-## Cara Penggunaan
+## How to Use
 
-### 1. Setup Repeater Field (ACF atau SCF)
+### 1. Setup Repeater Field (ACF or SCF)
 
-**Untuk ACF:**
-Buat ACF Field Group dengan Repeater field yang berisi:
-- Sub field untuk judul (text field)
-- Sub field untuk konten (textarea/wysiwyg field)
+**For ACF:**
+Create an ACF Field Group with a Repeater field containing:
+- Sub field for title (text field)
+- Sub field for content (textarea/wysiwyg field)
 
-**Untuk SCF:**
-Buat SCF Field Group dengan Repeater field yang berisi:
-- Sub field untuk judul (text field)  
-- Sub field untuk konten (textarea/wysiwyg field)
+**For SCF:**
+Create an SCF Field Group with a Repeater field containing:
+- Sub field for title (text field)  
+- Sub field for content (textarea/wysiwyg field)
 
-Contoh struktur:
+Example structure:
 ```
 Field Group: FAQ
 - Field Type: Repeater
@@ -64,100 +64,100 @@ Field Group: FAQ
   - content (Textarea/WYSIWYG)
 ```
 
-### 2. Menggunakan Widget di Elementor
+### 2. Using the Widget in Elementor
 
-1. Edit halaman dengan Elementor
-2. Cari widget "ACF/SCF Accordion" di panel widgets
-3. Drag widget ke area yang diinginkan
-4. Konfigurasi pengaturan:
-   - **Repeater Field Name**: Nama field repeater ACF/SCF (contoh: `accordion_items`)
-   - **Title Sub Field Name**: Nama sub field untuk judul (contoh: `title`)
-   - **Content Sub Field Name**: Nama sub field untuk konten (contoh: `content`)
-   - **Post ID**: Kosongkan untuk post saat ini, atau masukkan ID post tertentu
-   - **Open First Item**: Aktifkan untuk membuka item pertama secara default
-   - **Allow Multiple Open**: Aktifkan untuk mengizinkan beberapa item terbuka bersamaan
+1. Edit a page with Elementor
+2. Search for the "ACF/SCF Accordion" widget in the widgets panel
+3. Drag the widget to the desired area
+4. Configure settings:
+   - **Repeater Field Name**: Name of the ACF/SCF repeater field (example: `accordion_items`)
+   - **Title Sub Field Name**: Name of the sub field for the title (example: `title`)
+   - **Content Sub Field Name**: Name of the sub field for the content (example: `content`)
+   - **Post ID**: Leave empty for the current post, or enter a specific post ID
+   - **Open First Item**: Enable to open the first item by default
+   - **Allow Multiple Open**: Enable to allow multiple items to be open simultaneously
    
-5. Konfigurasi Icons:
-   - **Collapse Icon**: Pilih icon untuk state tertutup (default: chevron-down)
-   - **Expand Icon**: Pilih icon untuk state terbuka (default: chevron-up)  
-   - **Icon Position**: Pilih posisi icon (kiri atau kanan)
+5. Configure Icons:
+   - **Collapse Icon**: Choose an icon for the closed state (default: chevron-down)
+   - **Expand Icon**: Choose an icon for the open state (default: chevron-up)  
+   - **Icon Position**: Choose the icon position (left or right)
 
 ### 3. Styling
 
-Widget menyediakan berbagai opsi styling melalui Elementor:
+The widget provides various styling options through Elementor:
 
 #### Accordion Settings
-- Jarak antar item
-- Border dan border radius
+- Spacing between items
+- Borders and border radius
 - Box shadow
 
 #### Title Settings
 - Typography
-- Warna (normal, hover, active)
+- Colors (normal, hover, active)
 - Background color
 - Padding
 - Border radius
 
 #### Content Settings
 - Typography
-- Warna teks dan background
+- Text and background colors
 - Padding
 - Border
 
 #### Icon Settings
-- **Collapse Icon**: Icon yang ditampilkan saat accordion tertutup
-- **Expand Icon**: Icon yang ditampilkan saat accordion terbuka
-- **Icon Position**: Posisi icon (kiri atau kanan dari title)
-- Ukuran icon
-- Warna icon dengan state yang berbeda:
-  - **Normal**: Warna icon pada kondisi default
-  - **Hover**: Warna icon saat hover/diarahkan
-  - **Active**: Warna icon saat accordion terbuka
-- Jarak dari teks
+- **Collapse Icon**: Icon displayed when accordion is closed
+- **Expand Icon**: Icon displayed when accordion is open
+- **Icon Position**: Icon position (left or right of the title)
+- Icon size
+- Icon colors with different states:
+  - **Normal**: Icon color in default condition
+  - **Hover**: Icon color on hover
+  - **Active**: Icon color when accordion is open
+- Distance from text
 
 ## JavaScript API
 
-Plugin menyediakan JavaScript API untuk kontrol programatik:
+The plugin provides a JavaScript API for programmatic control:
 
 ```javascript
-// Mengkonfigurasi animasi
+// Configure animations
 ACFAccordion.configure({
-    animationDuration: 500,        // Durasi animasi slide (ms)
-    animationEasing: 'easeInOutQuart',  // Jenis easing
-    iconRotationDuration: 300      // Durasi rotasi icon (ms)
+    animationDuration: 500,        // Duration of slide animation (ms)
+    animationEasing: 'easeInOutQuart',  // Type of easing
+    iconRotationDuration: 300      // Duration of icon rotation (ms)
 });
 
-// Mendapatkan konfigurasi saat ini
+// Get current configuration
 var config = ACFAccordion.getConfig();
 
-// Membuka item accordion tertentu
+// Open a specific accordion item
 ACFAccordion.open('.acf-accordion-item:first');
 
-// Menutup item accordion tertentu
+// Close a specific accordion item
 ACFAccordion.close('.acf-accordion-item:first');
 
-// Toggle item accordion
+// Toggle accordion item
 ACFAccordion.toggle('.acf-accordion-item:first');
 
-// Membuka semua item (hanya jika multiple diaktifkan)
+// Open all items (only if multiple is enabled)
 ACFAccordion.openAll('.acf-accordion-wrapper');
 
-// Menutup semua item
+// Close all items
 ACFAccordion.closeAll('.acf-accordion-wrapper');
 ```
 
-### Kustomisasi Animasi
+### Animation Customization
 
-Plugin menggunakan animasi jQuery yang smooth dengan custom easing. Anda bisa mengkustomisasi:
+The plugin uses smooth jQuery animations with custom easing. You can customize:
 
 ```javascript
-// Contoh konfigurasi animasi yang lebih cepat
+// Example of faster animation configuration
 ACFAccordion.configure({
     animationDuration: 250,
     iconRotationDuration: 200
 });
 
-// Contoh konfigurasi animasi yang lebih lambat dan halus
+// Example of slower and smoother animation configuration
 ACFAccordion.configure({
     animationDuration: 600,
     animationEasing: 'easeInOutQuart',
@@ -167,7 +167,7 @@ ACFAccordion.configure({
 
 ## Events
 
-Widget memicu custom events yang bisa didengarkan:
+The widget triggers custom events that can be listened to:
 
 ```javascript
 $('.acf-accordion-item').on('acf-accordion:opened', function() {
@@ -181,68 +181,68 @@ $('.acf-accordion-item').on('acf-accordion:closed', function() {
 
 ## Troubleshooting
 
-### Widget tidak muncul di Elementor
-- Pastikan plugin sudah aktif
-- Pastikan Elementor dan ACF sudah terinstall dan aktif
-- Cek versi minimum yang diperlukan
+### Widget doesn't appear in Elementor
+- Make sure the plugin is active
+- Make sure Elementor and ACF are installed and active
+- Check the required minimum versions
 
-### Data tidak muncul
-- Pastikan nama field ACF benar
-- Pastikan data ACF sudah tersimpan untuk post/page yang dimaksud
-- Cek apakah Post ID sudah benar (kosongkan untuk post saat ini)
+### Data doesn't appear
+- Make sure the ACF field name is correct
+- Make sure ACF data has been saved for the intended post/page
+- Check if the Post ID is correct (leave empty for current post)
 
-### Styling tidak sesuai
-- Gunakan CSS custom jika diperlukan
-- Cek apakah tema tidak override styling
-- Gunakan inspector browser untuk debug CSS
+### Styling issues
+- Use custom CSS if needed
+- Check if the theme doesn't override styling
+- Use browser inspector for CSS debugging
 
-## Hooks dan Filters
+## Hooks and Filters
 
-Plugin menyediakan beberapa hooks untuk developer:
+The plugin provides several hooks for developers:
 
 ```php
-// Filter untuk memodifikasi data accordion sebelum ditampilkan
+// Filter to modify accordion data before display
 add_filter('acf_accordion_items', function($items, $settings) {
-    // Modifikasi $items sesuai kebutuhan
+    // Modify $items as needed
     return $items;
 }, 10, 2);
 
-// Action setelah accordion dirender
+// Action after accordion is rendered
 add_action('acf_accordion_after_render', function($settings) {
-    // Kode tambahan setelah render
+    // Additional code after rendering
 });
 ```
 
 ## Changelog
 
 ### 1.0.0
-- Rilis pertama
-- Widget dasar ACF Accordion
-- Styling dan kontrol Elementor
+- Initial release
+- Basic ACF Accordion widget
+- Elementor styling and controls
 - JavaScript API
 - Accessibility support
 
 ## Support
 
-Untuk pertanyaan atau bantuan, silakan:
-1. Buat issue di repository GitHub
-2. Hubungi developer melalui email
-3. Cek dokumentasi WordPress.org
+For questions or assistance, please:
+1. Create an issue in the GitHub repository
+2. Contact the developer via email
+3. Check the WordPress.org documentation
 
-## Kontribusi
+## Contribution
 
-Kontribusi sangat diterima! Silakan:
-1. Fork repository
-2. Buat branch untuk fitur baru
-3. Submit pull request
+Contributions are very welcome! Please:
+1. Fork the repository
+2. Create a branch for new features
+3. Submit a pull request
 
-## Lisensi
+## License
 
-GPL v2 atau yang lebih baru. Lihat [LICENSE](LICENSE) untuk detail lengkap.
+GPL v2 or later. See [LICENSE](LICENSE) for full details.
 
 ## Credits
 
-Dikembangkan dengan ❤️ menggunakan:
+Developed with ❤️ using:
 - [WordPress](https://wordpress.org/)
 - [Elementor](https://elementor.com/)
 - [Advanced Custom Fields](https://www.advancedcustomfields.com/)

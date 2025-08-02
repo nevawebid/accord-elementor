@@ -1,49 +1,49 @@
-# Instalasi dan Setup Plugin ACF/SCF Accordion for Elementor
+# Installation and Setup of ACF/SCF Accordion for Elementor Plugin
 
-## Panduan Instalasi
+## Installation Guide
 
 ### 1. Upload Plugin
 
-1. Download atau clone repository ini
-2. Upload folder `accordion-acf-elementor` ke direktori `/wp-content/plugins/` 
-3. Atau zip folder dan upload melalui admin WordPress: **Plugins** → **Add New** → **Upload Plugin**
+1. Download or clone this repository
+2. Upload the `accordion-acf-elementor` folder to the `/wp-content/plugins/` directory
+3. Or zip the folder and upload through WordPress admin: **Plugins** → **Add New** → **Upload Plugin**
 
-### 2. Aktivasi Plugin
+### 2. Activate Plugin
 
-1. Masuk ke WordPress Admin
-2. Pergi ke **Plugins** → **Installed Plugins**
-3. Cari "ACF/SCF Accordion for Elementor" 
-4. Klik **Activate**
+1. Log in to WordPress Admin
+2. Go to **Plugins** → **Installed Plugins**
+3. Find "ACF/SCF Accordion for Elementor"
+4. Click **Activate**
 
-### 3. Verifikasi Dependencies
+### 3. Verify Dependencies
 
-Plugin akan otomatis mengecek dependencies yang diperlukan:
+The plugin will automatically check required dependencies:
 
-- ✅ **Elementor** (versi 3.0.0+)
-- ✅ **Advanced Custom Fields (ACF)** ATAU **Secure Custom Fields (SCF)**
+- ✅ **Elementor** (version 3.0.0+)
+- ✅ **Advanced Custom Fields (ACF)** OR **Secure Custom Fields (SCF)**
 
-Jika ada dependency yang missing, akan muncul notice di admin.
+If any dependency is missing, a notice will appear in the admin.
 
 ## Setup Custom Fields
 
-### Opsi 1: Setup ACF Field
+### Option 1: ACF Field Setup
 
-#### 1. Buat Field Group Baru
+#### 1. Create New Field Group
 
-1. Pergi ke **Custom Fields** → **Field Groups**
-2. Klik **Add New**
-3. Beri nama: "Accordion FAQ" (atau sesuai kebutuhan)
+1. Go to **Custom Fields** → **Field Groups**
+2. Click **Add New**
+3. Name it: "Accordion FAQ" (or as needed)
 
-#### 2. Tambah Repeater Field
+#### 2. Add Repeater Field
 
-1. Klik **Add Field**
+1. Click **Add Field**
 2. **Field Label**: Accordion Items
 3. **Field Name**: `accordion_items` 
 4. **Field Type**: Repeater
 
-#### 3. Tambah Sub Fields
+#### 3. Add Sub Fields
 
-Di dalam Repeater, tambahkan 2 sub fields:
+Inside the Repeater, add 2 sub fields:
 
 **Sub Field 1 - Title:**
 - **Field Label**: Title
@@ -53,32 +53,32 @@ Di dalam Repeater, tambahkan 2 sub fields:
 **Sub Field 2 - Content:**
 - **Field Label**: Content  
 - **Field Name**: `content`
-- **Field Type**: Textarea atau WYSIWYG Editor
+- **Field Type**: Textarea or WYSIWYG Editor
 
-### Opsi 2: Setup SCF Field
+### Option 2: SCF Field Setup
 
 #### 1. Install SCF Plugin
 
-1. Pergi ke **Plugins** → **Add New**
-2. Cari "Secure Custom Fields"
-3. Install dan aktifkan plugin
+1. Go to **Plugins** → **Add New**
+2. Search for "Secure Custom Fields"
+3. Install and activate the plugin
 
-#### 2. Buat Field Group Baru
+#### 2. Create New Field Group
 
-1. Pergi ke **SCF** → **Field Groups**
-2. Klik **Add New**
-3. Beri nama: "Accordion FAQ"
+1. Go to **SCF** → **Field Groups**
+2. Click **Add New**
+3. Name it: "Accordion FAQ"
 
-#### 3. Tambah Repeater Field
+#### 3. Add Repeater Field
 
-1. Klik **Add Field**
+1. Click **Add Field**
 2. **Field Label**: Accordion Items
 3. **Field Name**: `accordion_items`
 4. **Field Type**: Repeater
 
-#### 4. Tambah Sub Fields
+#### 4. Add Sub Fields
 
-Di dalam Repeater, tambahkan 2 sub fields:
+Inside the Repeater, add 2 sub fields:
 
 **Sub Field 1 - Title:**
 - **Field Label**: Title
@@ -92,123 +92,123 @@ Di dalam Repeater, tambahkan 2 sub fields:
 
 ### 4. Set Location Rules (ACF & SCF)
 
-Pilih dimana field ini akan muncul:
+Choose where this field will appear:
 - **Post Type** is equal to **Page**
-- Atau **Post Type** is equal to **Post**
-- Atau sesuai kebutuhan
+- Or **Post Type** is equal to **Post**
+- Or as needed
 
-### 5. Simpan Field Group
+### 5. Save Field Group
 
-Klik **Publish** untuk menyimpan.
+Click **Publish** to save.
 
-## Menggunakan Widget di Elementor
+## Using the Widget in Elementor
 
-### 1. Edit Page dengan Elementor
+### 1. Edit Page with Elementor
 
-1. Buat atau edit page/post
-2. Klik **Edit with Elementor**
+1. Create or edit a page/post
+2. Click **Edit with Elementor**
 
-### 2. Tambah Widget
+### 2. Add Widget
 
-1. Di panel kiri, cari widget **"ACF/SCF Accordion"**
-2. Drag ke area yang diinginkan
+1. In the left panel, search for the **"ACF/SCF Accordion"** widget
+2. Drag it to the desired area
 
-### 3. Konfigurasi Widget
+### 3. Configure Widget
 
-**Tab Content:**
+**Content Tab:**
 - **Repeater Field Name**: `accordion_items`
 - **Title Sub Field Name**: `title`  
 - **Content Sub Field Name**: `content`
-- **Post ID**: Kosongkan (untuk post saat ini)
-- **Open First Item**: Toggle sesuai kebutuhan
-- **Allow Multiple Open**: Toggle sesuai kebutuhan
+- **Post ID**: Leave empty (for current post)
+- **Open First Item**: Toggle as needed
+- **Allow Multiple Open**: Toggle as needed
 
-**Tab Style:**
-- Sesuaikan styling accordion, title, content, dan icon
-- Semua bisa dikustomisasi melalui Elementor
+**Style Tab:**
+- Adjust styling for accordion, title, content, and icon
+- Everything can be customized through Elementor
 
-### 4. Preview dan Publish
+### 4. Preview and Publish
 
-1. Klik **Preview** untuk melihat hasil
-2. Jika sudah sesuai, klik **Publish**
+1. Click **Preview** to see the result
+2. If it looks good, click **Publish**
 
-## Contoh Data
+## Example Data
 
-Untuk testing, isi data field seperti ini:
+For testing, fill the field data like this:
 
 **Item 1:**
-- Title: "Apa itu WordPress?"
-- Content: "WordPress adalah sistem manajemen konten (CMS) yang populer untuk membuat website."
+- Title: "What is WordPress?"
+- Content: "WordPress is a popular content management system (CMS) for creating websites."
 
 **Item 2:**  
-- Title: "Bagaimana cara install plugin?"
-- Content: "Anda bisa install plugin melalui admin WordPress di menu Plugins > Add New."
+- Title: "How to install plugins?"
+- Content: "You can install plugins through the WordPress admin in the Plugins > Add New menu."
 
 **Item 3:**
-- Title: "Apa keuntungan menggunakan Elementor?"
-- Content: "Elementor memungkinkan Anda membuat halaman dengan drag & drop tanpa coding."
+- Title: "What are the benefits of using Elementor?"
+- Content: "Elementor allows you to create pages with drag & drop without coding."
 
-## Tips Penggunaan
+## Usage Tips
 
 ### Plugin Compatibility
-- Plugin ini kompatibel dengan ACF Free, ACF Pro, dan SCF
-- Secara otomatis mendeteksi plugin mana yang aktif
-- Menggunakan function yang sesuai untuk mengambil data
+- This plugin is compatible with ACF Free, ACF Pro, and SCF
+- Automatically detects which plugin is active
+- Uses appropriate functions to retrieve data
 
-### Multiple Accordion di Satu Page
+### Multiple Accordions on One Page
 
-Anda bisa menambahkan beberapa widget accordion di satu halaman dengan field yang berbeda.
+You can add multiple accordion widgets on a single page with different fields.
 
 ### Custom Post Types
 
-Widget bisa digunakan untuk custom post types, pastikan ACF field sudah di-assign ke post type tersebut.
+The widget can be used for custom post types, make sure the ACF field is assigned to that post type.
 
-### Styling Lanjutan
+### Advanced Styling
 
-Gunakan **Additional CSS** di Customizer atau child theme untuk styling yang lebih spesifik:
+Use **Additional CSS** in Customizer or child theme for more specific styling:
 
 ```css
-/* Custom styling untuk accordion */
+/* Custom styling for accordion */
 .my-custom-accordion .acf-accordion-title {
     background: #your-color;
 }
 ```
 
-### Menggunakan dengan PHP
+### Using with PHP
 
-Anda juga bisa menampilkan accordion secara programmatik:
+You can also display accordions programmatically:
 
 ```php
-// Di template file
+// In template file
 if (function_exists('get_field')) {
     $accordion_items = get_field('accordion_items');
-    // Render manual atau gunakan shortcode
+    // Manual render or use shortcode
 }
 ```
 
 ## Troubleshooting
 
-### Widget tidak muncul
-- Pastikan Elementor dan ACF sudah aktif
-- Clear cache Elementor
-- Refresh halaman editor
+### Widget doesn't appear
+- Make sure Elementor and ACF are active
+- Clear Elementor cache
+- Refresh the editor page
 
-### Data tidak tampil  
-- Cek nama field sudah benar (ACF/SCF)
-- Pastikan data sudah di-save di post/page
-- Cek Post ID jika menggunakan ID khusus
-- Pastikan plugin custom fields (ACF/SCF) aktif
+### Data doesn't display
+- Check if field names are correct (ACF/SCF)
+- Ensure data has been saved in the post/page
+- Check Post ID if using a specific ID
+- Make sure the custom fields plugin (ACF/SCF) is active
 
-### Styling bermasalah
-- Cek apakah tema tidak override CSS
-- Gunakan browser inspector untuk debug
-- Tambahkan `!important` jika perlu
+### Styling issues
+- Check if the theme is not overriding CSS
+- Use browser inspector for debugging
+- Add `!important` if necessary
 
 ## Support
 
-Jika mengalami masalah:
-1. Cek versi WordPress, Elementor, dan ACF/SCF
-2. Test dengan tema default (Twenty Twenty-Three)
-3. Disable plugin lain untuk test conflict
-4. Pastikan hanya satu plugin custom fields yang aktif (ACF atau SCF)
-5. Hubungi developer jika masih ada issue
+If you experience issues:
+1. Check versions of WordPress, Elementor, and ACF/SCF
+2. Test with default theme (Twenty Twenty-Three)
+3. Disable other plugins to test for conflicts
+4. Make sure only one custom fields plugin is active (ACF or SCF)
+5. Contact the developer if issues persist

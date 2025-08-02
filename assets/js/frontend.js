@@ -1,7 +1,7 @@
 /**
  * ACF Accordion for Elementor - Frontend JavaScript
  * 
- * Script untuk menangani interaktivitas accordion
+ * Script to handle accordion interactivity
  */
 
 (function($) {

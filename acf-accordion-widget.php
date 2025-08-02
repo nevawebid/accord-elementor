@@ -508,6 +508,15 @@ class ACF_Accordion_Widget extends \Elementor\Widget_Base {
             ]
         );
 
+        $this->start_controls_tabs('icon_style_tabs');
+
+        $this->start_controls_tab(
+            'icon_normal_tab',
+            [
+                'label' => esc_html__('Normal', 'acf-accordion-elementor'),
+            ]
+        );
+
         $this->add_control(
             'icon_color',
             [
@@ -518,6 +527,50 @@ class ACF_Accordion_Widget extends \Elementor\Widget_Base {
                 ],
             ]
         );
+
+        $this->end_controls_tab();
+
+        $this->start_controls_tab(
+            'icon_hover_tab',
+            [
+                'label' => esc_html__('Hover', 'acf-accordion-elementor'),
+            ]
+        );
+
+        $this->add_control(
+            'icon_hover_color',
+            [
+                'label' => esc_html__('Color', 'acf-accordion-elementor'),
+                'type' => \Elementor\Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .acf-accordion-title:hover .acf-accordion-icon' => 'color: {{VALUE}};',
+                ],
+            ]
+        );
+
+        $this->end_controls_tab();
+
+        $this->start_controls_tab(
+            'icon_active_tab',
+            [
+                'label' => esc_html__('Active', 'acf-accordion-elementor'),
+            ]
+        );
+
+        $this->add_control(
+            'icon_active_color',
+            [
+                'label' => esc_html__('Color', 'acf-accordion-elementor'),
+                'type' => \Elementor\Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .acf-accordion-item.active .acf-accordion-icon' => 'color: {{VALUE}};',
+                ],
+            ]
+        );
+
+        $this->end_controls_tab();
+
+        $this->end_controls_tabs();
 
         $this->add_responsive_control(
             'icon_spacing',
@@ -536,8 +589,10 @@ class ACF_Accordion_Widget extends \Elementor\Widget_Base {
                     'size' => 10,
                 ],
                 'selectors' => [
-                    '{{WRAPPER}} .acf-accordion-icon' => 'margin-left: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .acf-accordion-icon-right' => 'margin-left: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .acf-accordion-icon-left' => 'margin-right: {{SIZE}}{{UNIT}};',
                 ],
+                'separator' => 'before',
             ]
         );
 
@@ -679,7 +734,7 @@ class ACF_Accordion_Widget extends \Elementor\Widget_Base {
                             </span>
                         <?php endif; ?>
                     </div>
-                    <div class="acf-accordion-content" style="<?php echo !$is_active ? 'display: none;' : ''; ?>">
+                    <div class="acf-accordion-content">
                         <?php echo wp_kses_post($content); ?>
                     </div>
                 </div>
@@ -718,7 +773,7 @@ class ACF_Accordion_Widget extends \Elementor\Widget_Base {
                         </span>
                     <# } #>
                 </div>
-                <div class="acf-accordion-content" <# if (!firstItemOpen) { #>style="display: none;"<# } #>>
+                <div class="acf-accordion-content">
                     Sample accordion content. This will be replaced with your ACF/SCF repeater data.
                 </div>
             </div>
@@ -742,7 +797,7 @@ class ACF_Accordion_Widget extends \Elementor\Widget_Base {
                         </span>
                     <# } #>
                 </div>
-                <div class="acf-accordion-content" style="display: none;">
+                <div class="acf-accordion-content">
                     Another sample content for demonstration.
                 </div>
             </div>

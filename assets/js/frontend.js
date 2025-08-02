@@ -9,7 +9,7 @@
     
     // Animation configuration
     var accordionConfig = {
-        animationDuration: 450,
+        animationDuration: 250,
         animationEasing: 'easeInOutQuart',
         iconRotationDuration: 300
     };
@@ -53,6 +53,47 @@
             
             var allowMultiple = $wrapper.data('multiple') === true || $wrapper.data('multiple') === 'true';
             var $titles = $wrapper.find('.acf-accordion-title');
+            var $items = $wrapper.find('.acf-accordion-item');
+            
+            // Initialize icon states and content visibility
+            $items.each(function() {
+                var $item = $(this);
+                var $title = $item.find('.acf-accordion-title');
+                var $content = $item.find('.acf-accordion-content');
+                var $collapseIcon = $title.find('.acf-accordion-icon-collapse');
+                var $expandIcon = $title.find('.acf-accordion-icon-expand');
+                
+                // Store original padding for later restoration
+                if (!$content.data('original-padding')) {
+                    var originalPadding = $content.css('padding');
+                    $content.data('original-padding', originalPadding);
+                }
+                
+                if ($collapseIcon.length && $expandIcon.length) {
+                    if ($item.hasClass('active')) {
+                        // If item is active (open), show expand icon and hide collapse icon
+                        $collapseIcon.hide();
+                        $expandIcon.show();
+                        // Ensure content is visible with normal properties
+                        $content.css({
+                            'display': 'block',
+                            'height': 'auto',
+                            'overflow': 'visible'
+                        });
+                    } else {
+                        // If item is inactive (closed), show collapse icon and hide expand icon
+                        $collapseIcon.show();
+                        $expandIcon.hide();
+                        // Set collapsed state properties
+                        $content.css({
+                            'display': 'none',
+                            'height': '0',
+                            'padding': '0',
+                            'overflow': 'hidden'
+                        });
+                    }
+                }
+            });
             
             // Bind click events
             $titles.off('click.acf-accordion').on('click.acf-accordion', function(e) {
@@ -109,12 +150,18 @@
         var $title = $item.find('.acf-accordion-title');
         var $content = $item.find('.acf-accordion-content');
         var $icon = $title.find('.acf-accordion-icon');
+        var $collapseIcon = $title.find('.acf-accordion-icon-collapse');
+        var $expandIcon = $title.find('.acf-accordion-icon-expand');
         
         $item.addClass('active');
         $title.attr('aria-expanded', 'true');
         
-        // Handle icon animation based on type
-        if ($icon.hasClass('acf-accordion-icon-left') || $icon.hasClass('acf-accordion-icon-right')) {
+        // Handle icon visibility for new icon system
+        if ($collapseIcon.length && $expandIcon.length) {
+            // Hide collapse icon and show expand icon when opened
+            $collapseIcon.hide();
+            $expandIcon.show();
+        } else if ($icon.hasClass('acf-accordion-icon-left') || $icon.hasClass('acf-accordion-icon-right')) {
             // New icon system - CSS handles the transition
             // No additional JavaScript needed
         } else {
@@ -124,28 +171,50 @@
                 'transform': 'rotate(180deg)'
             });
         }
+
+        // Store original padding and height for restoration
+        var originalPadding = $content.data('original-padding') || $content.css('padding');
+        var originalHeight = $content.data('original-height') || 'auto';
         
-        // Smooth slide down animation with custom easing
-        $content.stop(true, true).slideDown({
-            duration: accordionConfig.animationDuration,
-            easing: accordionConfig.animationEasing,
-            start: function() {
-                // Add opening class for additional CSS animations
-                $item.addClass('acf-accordion-opening');
-                // Ensure border styling is properly applied during animation
-                $content.css('display', 'block');
-            },
-            complete: function() {
-                $item.removeClass('acf-accordion-opening');
-                // Ensure content is visible with its borders
-                $content.css('display', 'block');
-                // Trigger custom event after animation completes
-                $item.trigger('acf-accordion:opened');
-            }
+        if (!$content.data('original-padding')) {
+            $content.data('original-padding', originalPadding);
+        }
+
+        // Set up the content for animation
+        $content.css({
+            'display': 'block',
+            'height': '0',
+            'padding': '0',
+            'overflow': 'hidden',
+            'transition': 'height ' + accordionConfig.animationDuration + 'ms ease-in-out, padding ' + accordionConfig.animationDuration + 'ms ease-in-out'
         });
-    }
-    
-    /**
+
+        // Get the natural height of the content
+        var scrollHeight = $content[0].scrollHeight;
+
+        // Add opening class for additional CSS animations
+        $item.addClass('acf-accordion-opening');
+
+        // Animate to full height and restore padding
+        setTimeout(function() {
+            $content.css({
+                'height': scrollHeight + 'px',
+                'padding': originalPadding
+            });
+        }, 10);
+
+        // Clean up after animation
+        setTimeout(function() {
+            $content.css({
+                'height': 'auto',
+                'overflow': 'visible',
+                'transition': ''
+            });
+            $item.removeClass('acf-accordion-opening');
+            // Trigger custom event after animation completes
+            $item.trigger('acf-accordion:opened');
+        }, accordionConfig.animationDuration + 50);
+    }    /**
      * Close accordion item with smooth animation
      * @param {jQuery} $item - The accordion item to close
      */
@@ -153,11 +222,17 @@
         var $title = $item.find('.acf-accordion-title');
         var $content = $item.find('.acf-accordion-content');
         var $icon = $title.find('.acf-accordion-icon');
+        var $collapseIcon = $title.find('.acf-accordion-icon-collapse');
+        var $expandIcon = $title.find('.acf-accordion-icon-expand');
         
         $title.attr('aria-expanded', 'false');
         
-        // Handle icon animation based on type
-        if ($icon.hasClass('acf-accordion-icon-left') || $icon.hasClass('acf-accordion-icon-right')) {
+        // Handle icon visibility for new icon system
+        if ($collapseIcon.length && $expandIcon.length) {
+            // Show collapse icon and hide expand icon when closed
+            $collapseIcon.show();
+            $expandIcon.hide();
+        } else if ($icon.hasClass('acf-accordion-icon-left') || $icon.hasClass('acf-accordion-icon-right')) {
             // New icon system - CSS handles the transition
             // No additional JavaScript needed
         } else {
@@ -167,21 +242,42 @@
                 'transform': 'rotate(0deg)'
             });
         }
-        
-        // Smooth slide up animation with custom easing
-        $content.stop(true, true).slideUp({
-            duration: accordionConfig.animationDuration,
-            easing: accordionConfig.animationEasing,
-            start: function() {
-                // Add closing class for additional CSS animations
-                $item.addClass('acf-accordion-closing');
-            },
-            complete: function() {
-                $item.removeClass('active acf-accordion-closing');
-                // Trigger custom event after animation completes
-                $item.trigger('acf-accordion:closed');
-            }
+
+        // Add closing class for additional CSS animations
+        $item.addClass('acf-accordion-closing');
+
+        // Get current height for smooth animation
+        var currentHeight = $content[0].scrollHeight;
+
+        // Set up transition
+        $content.css({
+            'height': currentHeight + 'px',
+            'overflow': 'hidden',
+            'transition': 'height ' + accordionConfig.animationDuration + 'ms ease-in-out, padding ' + accordionConfig.animationDuration + 'ms ease-in-out'
         });
+
+        // Force reflow
+        $content[0].offsetHeight;
+
+        // Animate to collapsed state
+        $content.css({
+            'height': '0',
+            'padding': '0'
+        });
+
+        // Clean up after animation
+        setTimeout(function() {
+            $item.removeClass('active acf-accordion-closing');
+            $content.css({
+                'display': 'none',
+                'height': '',
+                'padding': '',
+                'overflow': '',
+                'transition': ''
+            });
+            // Trigger custom event after animation completes
+            $item.trigger('acf-accordion:closed');
+        }, accordionConfig.animationDuration + 50);
     }
     
     /**

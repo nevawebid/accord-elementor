@@ -21,6 +21,7 @@ Plugin ini menyediakan widget Elementor khusus yang dapat mengambil data dari AC
 - ✅ Icon positioning (kiri/kanan)
 - ✅ Border radius untuk title yang dapat dikustomisasi
 - ✅ Smooth icon transitions dan hover effects
+- ✅ Icon color states (normal, hover, active) yang dapat dikustomisasi
 - ✅ Support untuk post ID khusus
 - ✅ JavaScript API untuk kontrol programatik
 - ✅ Dukungan ACF dan SCF (Secure Custom Fields)
@@ -108,7 +109,10 @@ Widget menyediakan berbagai opsi styling melalui Elementor:
 - **Expand Icon**: Icon yang ditampilkan saat accordion terbuka
 - **Icon Position**: Posisi icon (kiri atau kanan dari title)
 - Ukuran icon
-- Warna icon
+- Warna icon dengan state yang berbeda:
+  - **Normal**: Warna icon pada kondisi default
+  - **Hover**: Warna icon saat hover/diarahkan
+  - **Active**: Warna icon saat accordion terbuka
 - Jarak dari teks
 
 ## JavaScript API

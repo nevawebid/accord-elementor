@@ -43,8 +43,6 @@
 
 .acf-accordion-title:hover {
     background: #e9ecef;
-    transform: translateY(-1px);
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
     /* Border properties will be maintained on hover */
 }
 
@@ -131,10 +129,6 @@
 /* Smooth hover effects */
 .acf-accordion-title {
     transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-}
-
-.acf-accordion-title:hover {
-    transform: translateY(-1px);
 }
 
 /* Animation classes for enhanced effects */

@@ -4,7 +4,7 @@ Tags: acf, scf, accordion, elementor, widget, repeater, custom fields
 Requires at least: 5.0
 Tested up to: 6.6
 Requires PHP: 7.4
-Stable tag: 1.1.0
+Stable tag: 1.1.5
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -158,6 +158,13 @@ For support, please visit our [support forum](https://nevaweb.id/support/) or [c
 
 == Changelog ==
 
+= 1.1.5 =
+* Fixed translation issues
+* Improved internationalization support
+* Enhanced compatibility with latest WordPress version
+* Minor code optimizations
+* Performance improvements
+
 = 1.1.0 =
 * Added customizable border options for accordion title
 * Added customizable border options for accordion content
@@ -180,6 +187,9 @@ For support, please visit our [support forum](https://nevaweb.id/support/) or [c
 * Security enhancements
 
 == Upgrade Notice ==
+
+= 1.1.5 =
+This update fixes translation issues, improves internationalization support, and includes compatibility enhancements with the latest WordPress version.
 
 = 1.1.0 =
 This update adds customizable border options for both accordion title and content. Improved border radius controls and animation handling.

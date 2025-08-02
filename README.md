@@ -215,6 +215,21 @@ add_action('acf_accordion_after_render', function($settings) {
 
 ## Changelog
 
+### 1.1.5
+- Fixed translation issues
+- Improved internationalization support
+- Enhanced compatibility with latest WordPress version
+- Minor code optimizations
+- Performance improvements
+
+### 1.1.0
+- Added customizable border options for accordion title
+- Added customizable border options for accordion content
+- Enhanced border radius controls for content section
+- Added box shadow controls for content section
+- Improved animations to respect border settings during transitions
+- Fixed CSS display issues during accordion open/close transitions
+
 ### 1.0.0
 - Initial release
 - Basic ACF Accordion widget
